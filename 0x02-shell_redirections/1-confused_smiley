@@ -1,2 +1,2 @@
 #!/bin/bash
-echo  "\"(Ôo)'"
+echo $(echo "22 28 D4 6F 29 27" | xxd -p -r)
