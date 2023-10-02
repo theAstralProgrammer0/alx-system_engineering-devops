@@ -1,2 +1,2 @@
 #!/bin/bash
-rm -f !(*.js) 2>/dev/null
+find . -type f -name "*.js" -exec rm  -f {} +
