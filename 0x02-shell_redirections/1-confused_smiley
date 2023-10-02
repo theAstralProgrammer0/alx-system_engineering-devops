@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 echo $(echo "\"(Ôo)'")
+=======
+echo $(echo "22 28 D4 6F 29 27" | xxd -p -r)
+>>>>>>> 04589275311e8b332c9a343ae398e92c7eaf7d50
