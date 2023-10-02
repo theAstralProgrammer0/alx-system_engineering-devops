@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(head -n 3 ./iacta | tail -n +3)
+echo $(head -n 3 iacta | tail -n +3)
