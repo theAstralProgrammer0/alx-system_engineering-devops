@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1 | tail | sort -r
+ls -lt| grep -v "^d"| head
