@@ -1,1 +1,2 @@
-#!/bin/bash\nprintf "%.2f\\n" $NUM
+#!/bin/bash
+printf "%.2f\n" $NUM
