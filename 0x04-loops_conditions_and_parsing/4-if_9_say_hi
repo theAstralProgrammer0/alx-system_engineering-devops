@@ -6,9 +6,9 @@ var=0
 str_1="Best School"
 str_2="Hi"
 
-while [ $var -le 9 ]
+while [ $var -le 10 ]
 do
-        if [ $var -eq 8 ]
+        if [ $var -eq 9 ]
         then
                 echo "$str_2"
         else
