@@ -4,9 +4,8 @@
 var=9
 string="Best School"
 
-until [ $var -eq 0 ]
+until [ $var -eq -1 ]
 do
         echo "$string"
         var=$(( var - 1 ))
-        sleep 0.2
 done
