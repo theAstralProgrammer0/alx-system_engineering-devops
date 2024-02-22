@@ -2,4 +2,4 @@
 # This is the script that displays the visitor IP along with the HTTP status
 # code from the Apache log file.
 
-awk '{print $1, $9}' apache-access.log|uniq -c|sort|tac
+awk '{print $1, $9}' apache-access.log|sort|uniq -c|sort -nr
