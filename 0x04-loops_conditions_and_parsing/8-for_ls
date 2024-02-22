@@ -7,5 +7,5 @@
 list=$(ls)
 for line in $list
 do
-	echo "$(echo "$line"|cut -d'-' -f2-)"
+	echo "$line"|cut -d'-' -f2-
 done
