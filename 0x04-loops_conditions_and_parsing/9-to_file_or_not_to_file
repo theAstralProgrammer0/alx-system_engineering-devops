@@ -9,9 +9,9 @@ then
 	
 	if [ -s $file ]
 	then
-		echo "$file is not empty"
+		echo "$file file is not empty"
 	else
-		echo "$file is empty"
+		echo "$file file is empty"
 	fi
 
 	if [ -f $file ]
