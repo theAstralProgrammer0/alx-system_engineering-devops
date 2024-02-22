@@ -4,30 +4,32 @@
 # displays 9 and then bad luck from Japan for the 9th loop iteration
 # displays 17 and then bad luck from Italy for the 17th loop iteration
 
-var=0
-str="Best School"
-bad_c=3
+var=1
+bad_c=4
 str_bad_c="bad luck from China"
-bad_j=8
+bad_j=9
 str_bad_j="bad luck from Japan"
-bad_i=16
+bad_i=17
 str_bad_i="bad luck from Italy"
 
 
-while [ $var -le 19 ]
+while [ $var -le 20 ]
 do
 	case $var in 
 		$bad_c)
+			echo $var
 			echo "$str_bad_c"
 			;;
 		$bad_j)
+			echo $var
 			echo "$str_bad_j"
 			;;
 		$bad_i)
+			echo $var
 			echo "$str_bad_i"
 			;;
 		*)
-			echo "$str"
+			echo "$var"
 			;;
 	esac
 	var=$(( var + 1 ))
