@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# This script loops from 1 to 10 and:
+# displays bad luck for the 4th loop iteration
+# displays good luck for the 8th loop iteration
+# displays Best School for the other iterations
+
+var=0
+bad=3
+good=7
+str_norm="Best School"
+str_bad="bad luck"
+str_good="good luck"
+
+while [ $var -le 9 ]
+do
+	if [ $var -eq $bad ]
+	then
+		echo "$str_bad"
+	elif [ $var -eq $good ]
+	then
+		echo "$str_good"
+	else
+		echo "$str_norm"
+	fi
+	var=$(( var + 1 ))
+done

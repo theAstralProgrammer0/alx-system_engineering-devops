@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This is a script that displays "Best School" 10 times
+
+var=1
+string="Best School"
+while [ $var -le 10 ]
+do
+	echo "$string"
+	var=$(( var + 1))
+	sleep 0.3
+done

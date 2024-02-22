@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# This Bash script that displays numbers from 1 to 20 and:
+# displays 4 and then bad luck from China for the 4th loop iteration
+# displays 9 and then bad luck from Japan for the 9th loop iteration
+# displays 17 and then bad luck from Italy for the 17th loop iteration
+
+var=0
+str="Best School"
+bad_c=3
+str_bad_c="bad luck from China"
+bad_j=8
+str_bad_j="bad luck from Japan"
+bad_i=16
+str_bad_i="bad luck from Italy"
+
+
+while [ $var -le 19 ]
+do
+	case $var in 
+		$bad_c)
+			echo "$str_bad_c"
+			;;
+		$bad_j)
+			echo "$str_bad_j"
+			;;
+		$bad_i)
+			echo "$str_bad_i"
+			;;
+		*)
+			echo "$str"
+			;;
+	esac
+	var=$(( var + 1 ))
+done
