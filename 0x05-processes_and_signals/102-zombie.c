@@ -5,8 +5,13 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-int infinite_while(void);
-
+/**
+ * infinite_while - Aux function
+ *
+ * Description: This function waits the program infinitely
+ *
+ * Return: (int) 0 Success Always
+ */
 int infinite_while(void)
 {
 	while (1)
@@ -14,6 +19,13 @@ int infinite_while(void)
 	return (0);
 }
 
+/**
+ * main - Entry point
+ *
+ * Description: This is the entry point
+ *
+ * Return: (int) 0 Success Always
+ */
 int main(void)
 {
 	pid_t pid;
