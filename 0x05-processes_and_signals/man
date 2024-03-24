@@ -18,45 +18,47 @@
 
 start()
 {
-	./manage_my_process &
-	local pid=$!
-
-	echo "$pid" > /var/run/my_process.pid
-
+	./manage_my_process & 
+	touch /var/run/my_process.pid &
+	pgrep -f "manage_my_process" > /var/run/my_process.pid & 
 	echo "manage_my_process started"
 }
 
 stop()
 {
-	pkill -f "./manage_my_process"
-	rm -f /var/run/my_process.pid
-
+	pkill -f "manage_my_process" & 
+	rm -f /var/run/my_process.pid 
 	echo "manage_my_process stopped"
 }
 
 restart()
 {
-	stop > /dev/null 2>&1 
-	start > /dev/null 2>&1 
+	pkill -f "manage_my_process" & 
+	rm -f /var/run/my_process.pid 
+	./manage_my_process &
+	touch /var/run/my_process.pid
+	pgrep -f "manage_my_process" > /var/run/my_process.pid & 
 	echo "manage_my_process restarted"
 }
 
 
-if [ $# -eq 1 ]
+if [ "$#" -eq 1 ]
 then
-	case "$1" in
-		start)
-			start
-			;;
-		stop)
-			stop
-			;;
-		restart)
-			restart
-			;;
-		*)
-			echo "Usage: manage_my_process {start|stop|restart}"
-	esac
+	if [ "$1" == "start" ]
+	then
+		start
+
+	elif [ "$1" == "stop" ]
+	then
+		stop
+
+	elif [ "$1" == "restart" ]
+	then
+		restart 
+
+	else
+		echo "Usage: manage_my_process {start|stop|restart}"
+	fi
 else
 	echo "Usage: manage_my_process {start|stop|restart}"
 fi
