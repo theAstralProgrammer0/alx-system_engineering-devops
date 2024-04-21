@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This ssh config file allows ssh to authenticate using private key and
+# restricts usage of password to authenticate
+Include /etc/ssh/ssh_config.d/*.conf
+
+Host *
+	PasswordAuthentication no
+	IdentityFile ~/.ssh/school
+
