@@ -1,19 +1,10 @@
 # This is a puppet manifest that automates ssh configuration
-$sshd = "/home/ubuntu/.ssh/"
-$sshcf = "/home/ubuntu/.ssh/config"
-
-file { $sshd:
-	ensure => directory,
-	mode => '0700',
-}
-
-file { $sshcf:
-	ensure => file,
-	mode => '0600',
+file_line {'Turn off password authentication':
+	ensure => 'present',
+	path => '/etc/ssh/ssh_config',
 	content => "
 		Host *
 			PasswordAuthentication no
 			IdentityFile ~/.ssh/school
-		",
-}
-
+		   ",
+}	
