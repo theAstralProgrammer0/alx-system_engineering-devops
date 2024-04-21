@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script connects requests a remote server's `ssh daemon` for a `ssh handshake` from an `ssh client`
+ssh ubuntu@54.145.239.29
