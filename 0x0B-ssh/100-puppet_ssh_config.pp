@@ -4,7 +4,7 @@ file {	'Turn off password authentication':
 	path => '/etc/ssh/ssh_config',
 	content => "
 		Host *
-			PasswordAuthentication no
+			BatchMode yes
 			IdentityFile ~/.ssh/school
 		   ",
 }	
