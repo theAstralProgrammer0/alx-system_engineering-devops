@@ -15,8 +15,9 @@ file { $sshcf:
 	owner => $::environment['USER'],
 	group => $::environment['USER'],
 	content => "
-		PasswordAuthentication no
-		IdentityFile ~/.ssh/school
+		Host *
+			PasswordAuthentication no
+			IdentityFile ~/.ssh/school
 		",
 }
 
