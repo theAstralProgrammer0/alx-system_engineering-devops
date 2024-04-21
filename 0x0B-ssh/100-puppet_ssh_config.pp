@@ -1,5 +1,5 @@
 # This is a puppet manifest that automates ssh configuration
-file_line {'Turn off password authentication':
+file {	'Turn off password authentication':
 	ensure => 'present',
 	path => '/etc/ssh/ssh_config',
 	content => "
