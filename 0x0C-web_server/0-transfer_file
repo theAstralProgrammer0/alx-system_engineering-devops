@@ -10,5 +10,9 @@ if [ $# -lt 3 ]; then
 	echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
 	
 else
-	scp -o StrictHostKeyChecking=no -i "$prkey $src $user@$server_ip:$dest"
+	if [ -z "$prkey" ]; then
+		scp -o StrictHostKeyChecking=no "$src $user@$server_ip:$dest"
+	else
+		scp -o StrictHostKeyChecking=no -i "$prkey $src $user@$server_ip:$dest"
+	fi
 fi
