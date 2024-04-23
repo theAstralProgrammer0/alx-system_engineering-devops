@@ -6,9 +6,9 @@ server_ip=$2
 user=$3
 prkey=$4
 
-if [ $# -ge 4 ]; then
-	scp -o StrictHostKeyChecking=no -i "$prkey $src $user@$server_ip:$dest"
+if [ $# -lt 3 ]; then
+	echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
 	
 else
-	echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+	scp -o StrictHostKeyChecking=no -i "$prkey $src $user@$server_ip:$dest"
 fi
