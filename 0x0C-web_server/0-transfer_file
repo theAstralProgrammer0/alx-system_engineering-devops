@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+src=$1
+dest="~/"
+server_ip=$2
+user=$3
+prkey=$4
+
+if [ $# -ge 3 ]; then
+	scp -o StrictHostKeyChecking=no -i $prkey $src $user@$server_ip:$dest
+	
+else
+	echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+fi
