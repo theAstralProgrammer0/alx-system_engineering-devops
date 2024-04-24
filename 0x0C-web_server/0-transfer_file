@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # This script transfers a file from local device to a remote server (publish file)
 src=$1
+dest=$HOME
 server_ip=$2
 user=$3
 prkey=$4
@@ -10,9 +11,7 @@ if [ "$#" -lt 3 ]; then
 	
 elif [ "$#" -lt 4 ]; then
 
-	scp -o StrictHostKeyChecking=no "$src" "$user"@"$server_ip":~/
+	scp -o StrictHostKeyChecking=no "$src" "$user"@"$server_ip":"$dest"
 else
-	if [ -e "$prkey" ]
-		scp -o StrictHostKeyChecking=no -i "$prkey" "$src" "$user"@"$server_ip":~/
-	fi
+	scp -o StrictHostKeyChecking=no -i "$prkey" "$src" "$user"@"$server_ip":"$dest"
 fi
