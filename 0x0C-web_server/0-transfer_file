@@ -10,7 +10,7 @@ if [ "$#" -lt 3 ]; then
 	
 elif [ "$#" -lt 4 ]; then
 
-	scp -o StrictHostKeyChecking=no "$src $user@$server_ip":~/
+	scp -o StrictHostKeyChecking=no "$src" "$user"@"$server_ip":~/
 else
-	scp -o StrictHostKeyChecking=no -i "$prkey $src $user@$server_ip":~/
+	scp -o StrictHostKeyChecking=no -i "$prkey" "$src" "$user"@"$server_ip":~/
 fi
