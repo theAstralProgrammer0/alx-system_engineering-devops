@@ -9,7 +9,8 @@ prkey=$4
 if [ $# -lt 3 ]; then
 	echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
 	
-else
+elif [ $# -lt 4 ]; then
+
 	if [ -z "$prkey" ]; then
 		scp -o StrictHostKeyChecking=no "$src $user@$server_ip:$dest"
 	else
