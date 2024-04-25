@@ -13,7 +13,7 @@ service nginx start
 str_replacement='server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent'
 
 # use stream editor (sed) to search and replace in-place
-sed -i "s/server_name _;/$str_replacement/" /etc/nginx/sites-enabled/default
+sed -i "s/server_name _;/$str_replacement/" /etc/nginx/sites-available/default
 
 # Restart Nginx to apply the changes
 service nginx restart
