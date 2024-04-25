@@ -11,16 +11,15 @@ ufw allow "Nginx HTTP"
 echo "Hello World!" > /var/www/html/index.html
 
 # handle redirections 
-str_replacement='server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;'
-sed -i "s/server_name _;/$str_replacement/" /etc/nginx/sites-enabled/default
+str_repl='server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;'
+sed -i "s/server_name _;/$str_repl/" /etc/nginx/sites-enabled/default
+
+# populate 404.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
 
 # handle bad requests
-htm="/usr/share/nginx/html/404.html"
-touch "$htm"
-echo "Ceci n'est pas une page" > "$htm"
-e_tag=$(uuidgen)
-str_repl="http {\\n\\tadd_header ETag $e_tag;\\n\\terror_code 404 /404.html;"
-sed -i "s/http {/$str_repl/" /etc/nginx/nginx.conf
+str_repl='listen 80 default_server;\n\terror_page \/404.html\n\t}'
+sed -i "s/listen 80 default_server;/$str_repl/" /etc/nginx/sites-enabled/default
 
 # Restart Nginx to apply the changes
 service nginx restart
