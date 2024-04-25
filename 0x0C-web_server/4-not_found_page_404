@@ -18,7 +18,7 @@ sed -i "s/server_name _;/$str_repl/" /etc/nginx/sites-enabled/default
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 
 # handle bad requests
-str_repl='listen 80 default_server;\n\terror_page \/404.html\n\t}'
+str_repl='listen 80 default_server;\n\terror_page 404 \/404.html;'
 sed -i "s/listen 80 default_server;/$str_repl/" /etc/nginx/sites-enabled/default
 
 # Restart Nginx to apply the changes
