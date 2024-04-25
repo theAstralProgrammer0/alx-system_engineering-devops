@@ -15,7 +15,9 @@ str_replacement='server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.
 sed -i "s/server_name _;/$str_replacement/" /etc/nginx/sites-enabled/default
 
 # handle bad requests
-touch /usr/share/nginx/html/404.html
+htm="/usr/share/nginx/html/404.html"
+touch "$htm"
+echo "Ceci n'est pas une page" > "$htm"
 e_tag=$(uuidgen)
 str_repl="http {\\n\\tadd_header ETag $e_tag;\\n\\terror_code 404 /404.html;"
 sed -i "s/http {/$str_repl/" /etc/nginx/nginx.conf
