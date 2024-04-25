@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
 # This is a script that installs nginx web server software on a physical server from scratch
+
 sudo apt-get update
 sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
+
+sudo ufw allow "Nginx HTTP"
 sudo echo "Hello World!" | sudo tee /var/www/html/index.html
 
-# Use sed to insert the redirection configuration into the Nginx default configuration
-sudo sed -i '/server_name _;/a \\tlocation = /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}' /etc/nginx/sites-available/default
+# define the string to be set as a replacement
+str_replacement='server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent'
+
+# use stream editor (sed) to search and replace in-place
+sed -i "s/server_name _;/$str_replacement/" /etc/nginx/sites-enabled/default
 
 # Restart Nginx to apply the changes
 sudo service nginx restart
