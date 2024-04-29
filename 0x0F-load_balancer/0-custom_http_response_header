@@ -22,8 +22,8 @@ str_repl='listen 80 default_server;\n\terror_page 404 \/404.html;'
 sed -i "s/listen 80 default_server;/$str_repl/" /etc/nginx/sites-enabled/default
 
 # Add HTTP header `X-Server-By`
-str_repl='\n\tadd_header X-Served-By $hostname;'
-sed -i "/listen [::]:80 default_server;/a\\$str_repl" /etc/nginx/sites-enabled/default
+str_repl='listen [::]:80 default_server;\n\tadd_header X-Served-By $hostname;'
+sed -i "s/listen [::]:80 default_server;/$str_repl/" /etc/nginx/sites-enabled/default
  
 # Restart Nginx to apply the changes
 service nginx restart
