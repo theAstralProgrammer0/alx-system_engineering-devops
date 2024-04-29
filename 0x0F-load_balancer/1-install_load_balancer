@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# This script automates haproxy load balancer installation and 
+# configuration on a new Ubuntu Server
+
+apt-get update
+
+apt-get install haproxy
+
+sed -i '$a\ENABLED=1' /etc/default/haproxy
+
+mv /etc/haproxy/haproxy.cfg{,.original}
+
+cat <<EOF >/etc/haproxy/haproxy.cfg
+global
+        log 127.0.0.1 local0 notice
+        maxconn 2000
+        user haproxy
+        group haproxy
+
+defaults
+        log     global
+        mode    http
+        option  httplog
+        option  dontlognull
+        retries 3
+        option redispatch
+        timeout connect  5000
+        timeout client  10000
+        timeout server  10000
+
+listen appname 0.0.0.0:80
+        mode http
+        stats enable
+        stats uri /haproxy?stats
+        stats realm Strictly\ Private
+        stats auth root:root
+        stats auth ubuntu:ubuntu
+        balance roundrobin
+        option httpclose
+        option forwardfor
+        server web_01 100.26.120.42:80 check
+        server web_02 3.86.18.239:80 check
+EOF
+
+service haproxy start
