@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# This is a script that installs nginx web server software on a physical server from scratch
+
+apt-get update
+apt-get -y install nginx
+
+# firewall allow
+ufw allow "Nginx HTTP"
+
+# populate index.html
+echo "Hello World!" > /var/www/html/index.html
+
+# handle redirections 
+str_repl='server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;'
+sed -i "s/server_name _;/$str_repl/" /etc/nginx/sites-enabled/default
+
+# populate 404.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+
+# handle bad requests
+str_repl='listen 80 default_server;\n\terror_page 404 \/404.html;'
+sed -i "s/listen 80 default_server;/$str_repl/" /etc/nginx/sites-enabled/default
+
+# Add HTTP header `X-Server-By`
+str_repl='\n\tadd_header X-Served-By $hostname;'
+sed -i "/listen [::]:80 default_server;/a\\$str_repl" /etc/nginx/sites-enabled/default
+ 
+# Restart Nginx to apply the changes
+service nginx restart

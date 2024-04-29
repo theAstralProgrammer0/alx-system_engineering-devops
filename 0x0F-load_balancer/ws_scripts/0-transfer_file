@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script transfers a file from local device to a remote server (publish file)
+src=$1
+server_ip=$2
+user=$3
+prkey=$4
+
+if [ "$#" -lt 3 ]; then
+	echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+	
+elif [ "$#" -lt 4 ]; then
+
+	scp -o StrictHostKeyChecking=no "$src" "$user"@"$server_ip":~/
+else
+	scp -o StrictHostKeyChecking=no -i "$prkey" "$src" "$user"@"$server_ip":~/
+fi
