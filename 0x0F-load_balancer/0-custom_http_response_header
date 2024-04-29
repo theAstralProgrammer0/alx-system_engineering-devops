@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This is a script that installs nginx web server software on a physical server from scratch
+# This is a script that installs nginx web server software on a physical server and adds a header tag
 
 apt-get update
 apt-get -y install nginx
