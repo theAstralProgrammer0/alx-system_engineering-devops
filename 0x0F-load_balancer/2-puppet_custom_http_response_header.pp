@@ -1,19 +1,16 @@
 # This puppet manifest automates creating a custom HTTP header response for web servers
 
 exec {'update':
-  command => 'apt-get update',
+  command => '/usr/bin/apt-get update',
 }
-
-package {'nginx':
+-> package {'nginx':
   ensure => 'present',
 }
-
-file_line { 'add http_header':
+-> file_line { 'http_header':
   path  => '/etc/nginx/nginx.conf',
   match => 'http {',
   line  => "http {\n\tadd_header X-Served-By \"${hostname}\";",
 }
-
-exec {'restart':
-  command => 'service nginx restart',
+-> exec {'run':
+  command => '/usr/sbin/service nginx restart',
 }
