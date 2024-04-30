@@ -6,7 +6,7 @@ apt-get -y update
 
 apt-get -y install haproxy
 
-sed -i '$a\ENABLED=1' /etc/default/haproxy
+echo "ENABLED=1" >> /etc/default/haproxy
 
 cat <<EOF >>/etc/haproxy/haproxy.cfg
 
