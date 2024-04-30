@@ -15,7 +15,7 @@ cat <<EOF >>/etc/haproxy/haproxy.cfg
 frontend lb_01_client
         bind *:80
         mode http
-        default_server lb_01_server
+        default_backend lb_01_server
 
 backend lb_01_server
         balance roundrobin
@@ -23,4 +23,4 @@ backend lb_01_server
         server web_02 3.86.18.239:80 check
 EOF
 
-service haproxy start
+service haproxy restart
