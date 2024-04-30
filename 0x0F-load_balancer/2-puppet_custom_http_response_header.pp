@@ -8,9 +8,9 @@ exec { 'update':
 
 file_line { 'add_header':
   ensure => present,
-  path => '/etc/nginx/sites-enabled/default',
-  match => 'server_name _;'
-  line => '\n\tadd_header X-Served-By $hostname;',
+  path => '/etc/nginx/nginx.conf',
+  match => 'http {',
+  line => "http {\n\tadd_header X-Served-By \"${hostname}\";",
 }
 
 exec { 'restart':
