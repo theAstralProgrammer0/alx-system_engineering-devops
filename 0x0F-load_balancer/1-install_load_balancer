@@ -8,8 +8,6 @@ apt-get install haproxy
 
 sed -i '$a\ENABLED=1' /etc/default/haproxy
 
-mv /etc/haproxy/haproxy.cfg{,.original}
-
 cat <<EOF >>/etc/haproxy/haproxy.cfg
 
 frontend lb_01_client
@@ -19,8 +17,8 @@ frontend lb_01_client
 
 backend lb_01_server
         balance roundrobin
-        server web_01 100.26.120.42:80 check
-        server web_02 3.86.18.239:80 check
+        server 530760-web-01 100.26.120.42:80 check
+        server 530760-web-02 3.86.18.239:80 check
 EOF
 
 service haproxy restart
