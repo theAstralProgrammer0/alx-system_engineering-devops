@@ -2,9 +2,9 @@
 # This script automates haproxy load balancer installation and 
 # configuration on a new Ubuntu Server
 
-apt-get update
+apt-get -y update
 
-apt-get install haproxy
+apt-get -y install haproxy
 
 sed -i '$a\ENABLED=1' /etc/default/haproxy
 
