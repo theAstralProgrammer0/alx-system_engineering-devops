@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 # This script configures an nginx server to server a webpage
-sudo apt update && sudo apt -y upgrade
+apt update && sudo apt -y upgrade
 
-sudo apt-get install -y curl nginx
+apt-get install -y curl nginx lsof
 
 sed -i 's_root \/usr\/share\/nginx\/html;_root \/var\/www\/html;_' /etc/nginx/sites-enabled/default
 
 sed -i 's_index index.html index.htm;_index index.html index.nginx-debian.html;_' /etc/nginx/sites-enabled/default
 
 sed -i 's/listen \[::\]:80 default_server ipv6only=on;/listen \[::\]:80 default_server;/' /etc/nginx/sites-enabled/default
+
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled
 
 service nginx restart
