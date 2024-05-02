@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+sudo apt update && sudo apt -y upgrade
+
+sudo apt-get install -y curl nginx
+
+sed -i 's_root \/usr\/share\/nginx\/html;_root \/var\/www\/html;_' /etc/nginx/sites-enabled/default
+
+sed -i 's_index index.html index.htm;_index index.html index.nginx-debian.html;_' /etc/nginx/sites-enabled/default
+
+service nginx restart
