@@ -8,4 +8,6 @@ sed -i 's_root \/usr\/share\/nginx\/html;_root \/var\/www\/html;_' /etc/nginx/si
 
 sed -i 's_index index.html index.htm;_index index.html index.nginx-debian.html;_' /etc/nginx/sites-enabled/default
 
+sed -i 's/listen \[::\]:80 default_server ipv6only=on;/listen \[::\]:80 default_server;/' /etc/nginx/sites-enabled/default
+
 service nginx restart
