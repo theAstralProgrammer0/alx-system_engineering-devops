@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+# Function to fetch DNS information
+get_dns_info() {
+    local domain="$1"
+    local subdomain="$2"
+    local record_type="$3"
+    dig +short "$subdomain.$domain" | awk -v subdomain="$subdomain" -v record_type="$record_type" -v domain="$domain" '{ print "The subdomain " subdomain " is a " record_type " record and points to " $0 }'
+}
+
+# Main function
+main() {
+    local domain="$1"
+    local subdomain="$2"
+    local record_type="A"
+
+    if [ -z "$domain" ]; then
+        echo "Error: Domain parameter is missing"
+        exit 1
+    fi
+
+    if [ -z "$subdomain" ]; then
+        # Default subdomains
+        subdomains=("www" "lb-01" "web-01" "web-02")
+        for subdomain in "${subdomains[@]}"; do
+            get_dns_info "$domain" "$subdomain" "$record_type"
+        done
+    else
+        get_dns_info "$domain" "$subdomain" "$record_type"
+    fi
+}
+
+# Check if all arguments are provided
+if [ "$#" -eq 0 ]; then
+    echo "Error: No arguments provided"
+    exit 1
+fi
+
+# Call the main function with provided arguments
+main "$@"
+
