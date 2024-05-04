@@ -34,14 +34,14 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend lb_01_client
+frontend lb_01_client_http
         bind *:80
         mode http
         default_backend lb_01_server
 
-
 frontend lb_01_client_https
-        bind *:443 ssl crt /etc/haproxy/certs/tdaisioso.tech.pem
+        bind *:443 ssl crt /etc/haproxy/certs/www.tdaisioso.tech.pem
+        redirect scheme https code 301 if !{ ssl_fc }
         default_backend lb_01_server
 
 backend lb_01_server
