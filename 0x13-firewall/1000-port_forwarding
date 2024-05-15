@@ -8,6 +8,13 @@
 #   ufw-before-forward
 #
 
+# Adding this line to forward all requests from port 8080 to port 80
+*nat
+:PREROUTING ACCEPT [0:0]
+-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
+COMMIT
+# end of my additions
+
 # Don't delete these required lines, otherwise there will be errors
 *filter
 :ufw-before-input - [0:0]
@@ -72,11 +79,4 @@
 -A ufw-before-input -p udp -d 239.255.255.250 --dport 1900 -j ACCEPT
 
 # don't delete the 'COMMIT' line or these rules won't be processed
-COMMIT
-
-# don't delete
-*nat
-:PREROUTING ACCEPT [0:0]
--A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
-
 COMMIT
