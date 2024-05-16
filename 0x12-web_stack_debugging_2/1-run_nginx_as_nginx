@@ -6,13 +6,13 @@ sudo useradd -r -d /var/cache/nginx -m -s /sbin/nologin nginx
 
 # Define config file locations
 NGINX_CONF="/etc/nginx/nginx.conf"
-SITES_ENABLED="/etc/nginx/sites-enabled/default"
+SITES_AVAIL="/etc/nginx/sites-available/default"
 
 # Change the user directive to 'nginx'
 sudo sed -i 's_^user .*_user nginx;_g' $NGINX_CONF
 
-sudo sed -i 's/listen 80 default_server;/listen 8080 default_server;/g' $SITES_ENABLED
-sudo sed -i 's/listen [::]:80 default_server;/listen [::]:8080 default_server;/g' $SITES_ENABLED
+sudo sed -i 's/listen 80 default_server;/listen 8080 default_server;/g' $SITES_AVAIL
+sudo sed -i 's/listen [::]:80 default_server;/listen [::]:8080 default_server;/g' $SITES_AVAIL
 
 # Restart NGINX to apply changes
 sudo service nginx restart
