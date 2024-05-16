@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Explanation
+
+# Create the nginx user without login privileges
+sudo useradd -r -d /var/cache/nginx -s /sbin/nologin nginx
+
+# Define NGINX config file location
+NGINX_CONF="/etc/nginx/nginx.conf"
+
+# Change the user directive to 'nginx'
+sudo sed -i 's/^user .*/user nginx;/g' $NGINX_CONF
+
+# Change the listen directive to '8080'
+sudo sed -i 's/listen .*/listen 8080;/g' $NGINX_CONF
+
+# Restart NGINX to apply changes
+sudo service nginx restart
