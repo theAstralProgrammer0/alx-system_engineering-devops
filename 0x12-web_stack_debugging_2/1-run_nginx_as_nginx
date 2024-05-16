@@ -15,4 +15,4 @@ sudo sed -i 's/listen 80 default_server;/listen 8080 default_server;/g' $SITES_A
 sudo sed -i 's/listen [::]:80 default_server;/listen [::]:8080 default_server;/g' $SITES_AVAIL
 
 # Restart NGINX to apply changes
-sudo -H -u nginx bash -c 'service nginx restart'
+sudo -u nginx service nginx restart
