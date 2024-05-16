@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Explanation of script
+sudo -H -u $1 bash -c 'whoami'
