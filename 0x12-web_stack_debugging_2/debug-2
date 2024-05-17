@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Debug web stack by running nginx with nginx user and listening on port
-# 8080
+# Debug web stack by running nginx with nginx user and listening on port 8080
 
 # search and replace user directive
 conf="/etc/nginx/nginx.conf"
@@ -18,6 +17,6 @@ sudo ln -s $sites_a $sites_e
 sudo kill "$(pgrep -o apache2)"
 
 # start nginx as nginx user
-sudo -u nginx service nginx start
+sudo -u nginx /usr/sbin/nginx -c $conf
 sudo service nginx status
 ps auxff
