@@ -14,7 +14,7 @@ sudo rm $sites_e
 sudo ln -s $sites_a $sites_e
 
 # kill apache2
-sudo kill -9 $(pgrep -o apache2)
+sudo kill -9 "$(pgrep -o apache2)"
 
 # start nginx as nginx user
 sudo service nginx start
