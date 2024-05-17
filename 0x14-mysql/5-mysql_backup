@@ -22,7 +22,7 @@ fi
 tar -czvf "$date.tar.gz" backup.sql
 
 # Cleanup
-rm backup.sql
+# rm backup.sql
 
 echo "Backup completed: $date.tar.gz"
 
