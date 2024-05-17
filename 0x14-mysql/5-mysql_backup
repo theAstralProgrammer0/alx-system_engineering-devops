@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Explanation
 # Check if password argument is provided
-if [ -z "$1" ]; then
-    echo "Usage: $0 <mysql_password>"
-    exit 1
-fi
+# if [ -z "$1" ]; then
+#    echo "Usage: $0 <mysql_password>"
+#    exit 1
+# fi
 
 # Get current date in the required format
 date=$(date +"%d-%m-%Y")
