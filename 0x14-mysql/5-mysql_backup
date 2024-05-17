@@ -19,10 +19,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Create compressed archive
-tar -czvf "$date.tar.gz" backup.sql
+tar -czf "$date.tar.gz" backup.sql
 
 # Cleanup
 # rm backup.sql
-
-echo "Backup completed: $date.tar.gz"
-
