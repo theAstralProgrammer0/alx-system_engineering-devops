@@ -5,6 +5,7 @@
 # search and replace user directive
 conf="/etc/nginx/nginx.conf"
 sudo sed -i 's/#user www-data;/user nginx;/g' $conf
+sudo chmod 644 $conf
 
 # replace 80 with 8080 in sites config. and refresh symlink
 sites_a="/etc/nginx/sites-available/default"
