@@ -19,5 +19,3 @@ sudo kill "$(pgrep -o apache2)"
 
 # start nginx as nginx user
 sudo -u nginx service nginx start
-sudo service nginx status
-ps auxff
