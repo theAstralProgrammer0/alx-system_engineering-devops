@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """This module accesses a REST API to fetch employee todo details"""
-import json 
+import json
 import requests
 import sys
 
