@@ -1,9 +1,11 @@
 #!/usr/bin/python3
+"""This module accesses a REST API to fetch employee todo details"""
 import requests
 import sys
 
 
 def get_emp_todo_progress(emp_id):
+    """This function gets and filters employee details"""
     # Fetch employee details
     user_url = f"https://jsonplaceholder.typicode.com/users/{emp_id}"
     user_response = requests.get(user_url)
