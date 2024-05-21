@@ -2,10 +2,9 @@
 """This module accesses a REST API to fetch employee todo details"""
 import json
 import requests
-import sys
 
 
-def get_emp_todo_progress(emp_id):
+def get_emp_todo_progress():
     """This function gets and filters employee details"""
     # Fetch employee details
     users_url = f"https://jsonplaceholder.typicode.com/users"
@@ -45,13 +44,4 @@ def get_emp_todo_progress(emp_id):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <emp_id>")
-        sys.exit(1)
-
-    try:
-        emp_id = int(sys.argv[1])
-        get_emp_todo_progress(emp_id)
-    except ValueError:
-        print("emp ID must be an integer.")
-        sys.exit(1)
+    get_emp_todo_progress()
