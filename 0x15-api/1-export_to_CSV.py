@@ -36,7 +36,6 @@ def get_emp_todo_progress(emp_id):
                     for todo in todos
                ]
 
-
     # Save csv data into csv file
     csv_file = f"{emp_id}.csv"
     with open(csv_file, mode='w', encoding='utf-8', newline='') as f:
