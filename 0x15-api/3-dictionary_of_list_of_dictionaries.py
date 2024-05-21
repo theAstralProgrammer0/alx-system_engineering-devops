@@ -19,8 +19,8 @@ def get_emp_todo_progress():
     for emp in users:
         emp_id = emp['id']
         # Fetch todos for the employee
-        todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={emp_id}"
-        todos_response = requests.get(todos_url)
+        url = f"https://jsonplaceholder.typicode.com/todos?userId={emp_id}"
+        todos_response = requests.get(url)
         todos = todos_response.json()
 
         # Prepare json data
@@ -32,7 +32,6 @@ def get_emp_todo_progress():
                     }
                     for todo in todos
                 ]
-                    
         all_tasks[emp_id] = tasks
 
     # Save json data into json file
