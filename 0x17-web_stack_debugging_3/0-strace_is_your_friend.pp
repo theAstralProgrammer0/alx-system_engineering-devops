@@ -1,9 +1,8 @@
 # Ensure the puppetlabs-stdlib module is installed
-# This can be installed via the Puppet Forge: puppet module install puppetlabs-stdlib
 
-file_line { 'fix-wp-locale-extension':
-  path  => '/var/www/html/wp-settings.php',
-  line  => "require_once( ABSPATH . WPINC . '/class-wp-locale.php' );",
-  match => '^require_once\( ABSPATH \. WPINC \. \'/class-wp-locale\.phpp\' \);$',
+$file = '/var/www/html/wp-settings.php'
+
+exec {'search_and_replace':
+  command => "sed -i 's/phpp/php/g' ${file_to_edit}",
+  path => ['/bin', '/usr/bin',
 }
-
