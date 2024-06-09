@@ -1,4 +1,4 @@
-# 🚨 Postmortem Report: The Great Authentication Meltdown 🚨
+# 🚨 Postmortem Report: Authentication Meltdown 🚨
 
 ![Authentication Meltdown](https://media.giphy.com/media/l1J9EdzfOSgfyueLm/giphy.gif)
 
@@ -65,7 +65,3 @@ Once the expired certificate was identified as the cause:
    - Train engineers on identifying and handling SSL-related issues.
 5. **Update Documentation:**
    - Document the SSL certificate renewal process and common issues for future reference.
-
-![Prevention](https://media.giphy.com/media/xTiTnnrAQryKlW0ffm/giphy.gif)
-
-By addressing these areas, we aim to prevent similar outages and ensure a more robust and reliable authentication service for our users. Thanks for reading, and remember: always check your certs! 🛡️
