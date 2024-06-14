@@ -9,5 +9,5 @@ exec { 'search_and_replace':
 
 -> exec { 'restart_nginx':
   command => 'nginx restart',
-  path    => ['/bin', '/usr/bin']
+  path    => '/etc/init.d'
   }
